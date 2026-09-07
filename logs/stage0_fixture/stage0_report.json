@@ -1,0 +1,1942 @@
+{
+  "stage": "0",
+  "fixture": true,
+  "question": "Does a train-era Sen slope of DJF-above-normal winters beat the train-era above-normal rate at held-out Indiana GHCND cores?",
+  "source": "fixture",
+  "n_rows": 188,
+  "n_stations": 4,
+  "units": "probability",
+  "element": "SNOW",
+  "season": "DJF",
+  "p_sfha_feature": false,
+  "hand_feature": false,
+  "nora_q": false,
+  "nwm_file": false,
+  "prcp_as_label": false,
+  "snwd_as_label": false,
+  "first_snow_as_label": false,
+  "inches_sen_as_product": false,
+  "refit_normal": false,
+  "snowy_year_select": false,
+  "belt_in_core_mean": false,
+  "page_in_scope": false,
+  "slope_beats_rate_brier": true,
+  "slope_beats_rate_mae": true,
+  "brier_mae_agree": true,
+  "figures": [
+    "series.png",
+    "brier_bars.png"
+  ],
+  "normals": {
+    "USW00014848": 51.4,
+    "USW00014827": 26.2,
+    "USW00093819": 21.2,
+    "USW00093817": 9.3
+  },
+  "first_complete": {
+    "USW00014848": 1975,
+    "USW00014827": 1978,
+    "USW00093819": 1980,
+    "USW00093817": 1979
+  },
+  "common_start": 1980,
+  "train_anchor": 1999.5,
+  "four_core_mean_rate": 0.4875,
+  "holdout": {
+    "n": 24,
+    "slope": {
+      "n": 24,
+      "brier": 0.0,
+      "mae": 0.0
+    },
+    "rate": {
+      "n": 24,
+      "brier": 0.2634375,
+      "mae": 0.5125000000000001
+    },
+    "last_year": {
+      "n": 24,
+      "brier": 0.0,
+      "mae": 0.0
+    }
+  },
+  "confirm": {
+    "n": 4,
+    "slope": {
+      "n": 4,
+      "brier": 0.0,
+      "mae": 0.0
+    },
+    "rate": {
+      "n": 4,
+      "brier": 0.2634375,
+      "mae": 0.5125
+    },
+    "last_year": {
+      "n": 4,
+      "brier": 0.0,
+      "mae": 0.0
+    }
+  },
+  "by_station": {
+    "USW00014848": {
+      "name": "South Bend",
+      "city": "South Bend",
+      "station_id": "USW00014848",
+      "train_n": 40,
+      "train_rate": 0.525,
+      "sen_slope_per_year": 0.027777777777777776,
+      "sen_slope_per_decade": 0.2777777777777778,
+      "ols_slope_per_year": 0.03742964352720529,
+      "holdout_n": 6,
+      "holdout_above_n": 6,
+      "holdout_above": "6/6",
+      "slope": {
+        "n": 6,
+        "brier": 0.0,
+        "mae": 0.0
+      },
+      "rate": {
+        "n": 6,
+        "brier": 0.225625,
+        "mae": 0.47500000000000003
+      },
+      "last_year": {
+        "n": 6,
+        "brier": 0.0,
+        "mae": 0.0
+      }
+    },
+    "USW00014827": {
+      "name": "Fort Wayne",
+      "city": "Fort Wayne",
+      "station_id": "USW00014827",
+      "train_n": 40,
+      "train_rate": 0.5,
+      "sen_slope_per_year": 0.02817460317460317,
+      "sen_slope_per_decade": 0.28174603174603174,
+      "ols_slope_per_year": 0.03752345215759938,
+      "holdout_n": 6,
+      "holdout_above_n": 6,
+      "holdout_above": "6/6",
+      "slope": {
+        "n": 6,
+        "brier": 0.0,
+        "mae": 0.0
+      },
+      "rate": {
+        "n": 6,
+        "brier": 0.25,
+        "mae": 0.5
+      },
+      "last_year": {
+        "n": 6,
+        "brier": 0.0,
+        "mae": 0.0
+      }
+    },
+    "USW00093819": {
+      "name": "Indianapolis",
+      "city": "Indianapolis",
+      "station_id": "USW00093819",
+      "train_n": 40,
+      "train_rate": 0.475,
+      "sen_slope_per_year": 0.027777777777777776,
+      "sen_slope_per_decade": 0.2777777777777778,
+      "ols_slope_per_year": 0.03742964352720538,
+      "holdout_n": 6,
+      "holdout_above_n": 6,
+      "holdout_above": "6/6",
+      "slope": {
+        "n": 6,
+        "brier": 0.0,
+        "mae": 0.0
+      },
+      "rate": {
+        "n": 6,
+        "brier": 0.275625,
+        "mae": 0.525
+      },
+      "last_year": {
+        "n": 6,
+        "brier": 0.0,
+        "mae": 0.0
+      }
+    },
+    "USW00093817": {
+      "name": "Evansville",
+      "city": "Evansville",
+      "station_id": "USW00093817",
+      "train_n": 40,
+      "train_rate": 0.45,
+      "sen_slope_per_year": 0.027402402402402402,
+      "sen_slope_per_decade": 0.27402402402402404,
+      "ols_slope_per_year": 0.03714821763602336,
+      "holdout_n": 6,
+      "holdout_above_n": 6,
+      "holdout_above": "6/6",
+      "slope": {
+        "n": 6,
+        "brier": 0.0,
+        "mae": 0.0
+      },
+      "rate": {
+        "n": 6,
+        "brier": 0.30250000000000005,
+        "mae": 0.5499999999999999
+      },
+      "last_year": {
+        "n": 6,
+        "brier": 0.0,
+        "mae": 0.0
+      }
+    }
+  },
+  "holdout_rows": [
+    {
+      "station_id": "USW00014848",
+      "name": "South Bend",
+      "city": "South Bend",
+      "lat": 41.71,
+      "lon": -86.32,
+      "winter_id": 2020,
+      "split": "holdout",
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.525,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00014848",
+      "name": "South Bend",
+      "city": "South Bend",
+      "lat": 41.71,
+      "lon": -86.32,
+      "winter_id": 2021,
+      "split": "holdout",
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.525,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00014848",
+      "name": "South Bend",
+      "city": "South Bend",
+      "lat": 41.71,
+      "lon": -86.32,
+      "winter_id": 2022,
+      "split": "holdout",
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.525,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00014848",
+      "name": "South Bend",
+      "city": "South Bend",
+      "lat": 41.71,
+      "lon": -86.32,
+      "winter_id": 2023,
+      "split": "holdout",
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.525,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00014848",
+      "name": "South Bend",
+      "city": "South Bend",
+      "lat": 41.71,
+      "lon": -86.32,
+      "winter_id": 2024,
+      "split": "holdout",
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.525,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00014848",
+      "name": "South Bend",
+      "city": "South Bend",
+      "lat": 41.71,
+      "lon": -86.32,
+      "winter_id": 2025,
+      "split": "holdout",
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.525,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00014827",
+      "name": "Fort Wayne",
+      "city": "Fort Wayne",
+      "lat": 41.12,
+      "lon": -85.19,
+      "winter_id": 2020,
+      "split": "holdout",
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.5,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00014827",
+      "name": "Fort Wayne",
+      "city": "Fort Wayne",
+      "lat": 41.12,
+      "lon": -85.19,
+      "winter_id": 2021,
+      "split": "holdout",
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.5,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00014827",
+      "name": "Fort Wayne",
+      "city": "Fort Wayne",
+      "lat": 41.12,
+      "lon": -85.19,
+      "winter_id": 2022,
+      "split": "holdout",
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.5,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00014827",
+      "name": "Fort Wayne",
+      "city": "Fort Wayne",
+      "lat": 41.12,
+      "lon": -85.19,
+      "winter_id": 2023,
+      "split": "holdout",
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.5,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00014827",
+      "name": "Fort Wayne",
+      "city": "Fort Wayne",
+      "lat": 41.12,
+      "lon": -85.19,
+      "winter_id": 2024,
+      "split": "holdout",
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.5,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00014827",
+      "name": "Fort Wayne",
+      "city": "Fort Wayne",
+      "lat": 41.12,
+      "lon": -85.19,
+      "winter_id": 2025,
+      "split": "holdout",
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.5,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093819",
+      "name": "Indianapolis",
+      "city": "Indianapolis",
+      "lat": 39.72,
+      "lon": -86.29,
+      "winter_id": 2020,
+      "split": "holdout",
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.475,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093819",
+      "name": "Indianapolis",
+      "city": "Indianapolis",
+      "lat": 39.72,
+      "lon": -86.29,
+      "winter_id": 2021,
+      "split": "holdout",
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.475,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093819",
+      "name": "Indianapolis",
+      "city": "Indianapolis",
+      "lat": 39.72,
+      "lon": -86.29,
+      "winter_id": 2022,
+      "split": "holdout",
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.475,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093819",
+      "name": "Indianapolis",
+      "city": "Indianapolis",
+      "lat": 39.72,
+      "lon": -86.29,
+      "winter_id": 2023,
+      "split": "holdout",
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.475,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093819",
+      "name": "Indianapolis",
+      "city": "Indianapolis",
+      "lat": 39.72,
+      "lon": -86.29,
+      "winter_id": 2024,
+      "split": "holdout",
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.475,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093819",
+      "name": "Indianapolis",
+      "city": "Indianapolis",
+      "lat": 39.72,
+      "lon": -86.29,
+      "winter_id": 2025,
+      "split": "holdout",
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.475,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093817",
+      "name": "Evansville",
+      "city": "Evansville",
+      "lat": 38.04,
+      "lon": -87.53,
+      "winter_id": 2020,
+      "split": "holdout",
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.45,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093817",
+      "name": "Evansville",
+      "city": "Evansville",
+      "lat": 38.04,
+      "lon": -87.53,
+      "winter_id": 2021,
+      "split": "holdout",
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.45,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093817",
+      "name": "Evansville",
+      "city": "Evansville",
+      "lat": 38.04,
+      "lon": -87.53,
+      "winter_id": 2022,
+      "split": "holdout",
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.45,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093817",
+      "name": "Evansville",
+      "city": "Evansville",
+      "lat": 38.04,
+      "lon": -87.53,
+      "winter_id": 2023,
+      "split": "holdout",
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.45,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093817",
+      "name": "Evansville",
+      "city": "Evansville",
+      "lat": 38.04,
+      "lon": -87.53,
+      "winter_id": 2024,
+      "split": "holdout",
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.45,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093817",
+      "name": "Evansville",
+      "city": "Evansville",
+      "lat": 38.04,
+      "lon": -87.53,
+      "winter_id": 2025,
+      "split": "holdout",
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.45,
+      "p_last": 1.0,
+      "last_year_above": 1
+    }
+  ],
+  "confirm_rows": [
+    {
+      "station_id": "USW00014848",
+      "name": "South Bend",
+      "city": "South Bend",
+      "lat": 41.71,
+      "lon": -86.32,
+      "winter_id": 2026,
+      "split": "confirm",
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.525,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00014827",
+      "name": "Fort Wayne",
+      "city": "Fort Wayne",
+      "lat": 41.12,
+      "lon": -85.19,
+      "winter_id": 2026,
+      "split": "confirm",
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.5,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093819",
+      "name": "Indianapolis",
+      "city": "Indianapolis",
+      "lat": 39.72,
+      "lon": -86.29,
+      "winter_id": 2026,
+      "split": "confirm",
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.475,
+      "p_last": 1.0,
+      "last_year_above": 1
+    },
+    {
+      "station_id": "USW00093817",
+      "name": "Evansville",
+      "city": "Evansville",
+      "lat": 38.04,
+      "lon": -87.53,
+      "winter_id": 2026,
+      "split": "confirm",
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3,
+      "above": 1,
+      "p_slope": 1.0,
+      "p_rate": 0.45,
+      "p_last": 1.0,
+      "last_year_above": 1
+    }
+  ],
+  "train_rows": [
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1980,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1981,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1982,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1983,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1984,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1985,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1986,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1987,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1988,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1989,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1990,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1991,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1992,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1993,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1994,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1995,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1996,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1997,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1998,
+      "above": 0,
+      "snow_in": 47.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 1999,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2000,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2001,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2002,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2003,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2004,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2005,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2006,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2007,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2008,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2009,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2010,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2011,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2012,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2013,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2014,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2015,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2016,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2017,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2018,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014848",
+      "city": "South Bend",
+      "winter_id": 2019,
+      "above": 1,
+      "snow_in": 55.4,
+      "snow_normal_in": 51.4
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1980,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1981,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1982,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1983,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1984,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1985,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1986,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1987,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1988,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1989,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1990,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1991,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1992,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1993,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1994,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1995,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1996,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1997,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1998,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 1999,
+      "above": 0,
+      "snow_in": 22.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2000,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2001,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2002,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2003,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2004,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2005,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2006,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2007,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2008,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2009,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2010,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2011,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2012,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2013,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2014,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2015,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2016,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2017,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2018,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00014827",
+      "city": "Fort Wayne",
+      "winter_id": 2019,
+      "above": 1,
+      "snow_in": 30.2,
+      "snow_normal_in": 26.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1980,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1981,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1982,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1983,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1984,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1985,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1986,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1987,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1988,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1989,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1990,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1991,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1992,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1993,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1994,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1995,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1996,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1997,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1998,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 1999,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2000,
+      "above": 0,
+      "snow_in": 17.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2001,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2002,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2003,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2004,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2005,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2006,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2007,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2008,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2009,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2010,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2011,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2012,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2013,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2014,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2015,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2016,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2017,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2018,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093819",
+      "city": "Indianapolis",
+      "winter_id": 2019,
+      "above": 1,
+      "snow_in": 25.2,
+      "snow_normal_in": 21.2
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1980,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1981,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1982,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1983,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1984,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1985,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1986,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1987,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1988,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1989,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1990,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1991,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1992,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1993,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1994,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1995,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1996,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1997,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1998,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 1999,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2000,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2001,
+      "above": 0,
+      "snow_in": 5.300000000000001,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2002,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2003,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2004,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2005,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2006,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2007,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2008,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2009,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2010,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2011,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2012,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2013,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2014,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2015,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2016,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2017,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2018,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    },
+    {
+      "station_id": "USW00093817",
+      "city": "Evansville",
+      "winter_id": 2019,
+      "above": 1,
+      "snow_in": 13.3,
+      "snow_normal_in": 9.3
+    }
+  ],
+  "confirm_in_train": false,
+  "confirm_in_slope": false,
+  "confirm_in_rate": false,
+  "random_split": false,
+  "holdout_winters": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "estimator": "sen"
+}
