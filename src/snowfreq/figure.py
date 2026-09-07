@@ -37,9 +37,8 @@ def _cap(n: int) -> None:
         raise FigureCapError(f"this tree stops at {MAX_FIGURES} figures")
 
 
-def write_series(dest: Path, *, fit: dict[str, Any], title: str, subtitle: str) -> Path:
-    require_clean(title, source="fig1_title")
-    require_clean(subtitle, source="fig1_sub")
+def draw_series(fit: dict[str, Any], *, title: str, subtitle: str):
+    """Four station panels. 0/1 winters as bars so the series has mass."""
     import matplotlib
 
     matplotlib.use("Agg")
@@ -48,7 +47,7 @@ def write_series(dest: Path, *, fit: dict[str, Any], title: str, subtitle: str) 
     rows = list(fit.get("holdout_rows") or [])
     train = list(fit.get("train_rows") or [])
     by_st = fit["by_station"]
-    fig, axes = plt.subplots(2, 2, figsize=(7.4, 6.2), sharex=True, sharey=True)
+    fig, axes = plt.subplots(2, 2, figsize=(12.0, 10.2), sharex=False, sharey=False)
     years_line = np.arange(int(fit["common_start"]), int(fit.get("train_last") or TRAIN_LAST_WINTER) + 7)
     for ax, (sid, city) in zip(axes.ravel(), CORE_STATIONS):
         st = by_st[sid]
@@ -56,42 +55,50 @@ def write_series(dest: Path, *, fit: dict[str, Any], title: str, subtitle: str) 
         slope = float(st["sen_slope_per_year"])
         anchor = float(fit["train_anchor"])
         tr = [r for r in train if r["station_id"] == sid]
-        ax.scatter(
-            [int(r["winter_id"]) for r in tr],
-            [int(r["above"]) for r in tr],
-            s=18,
-            c="#94a3b8",
-            marker=".",
-            zorder=2,
-            label="train 0/1",
-        )
         hold = [r for r in rows if r["station_id"] == sid]
-        ax.scatter(
-            [int(r["winter_id"]) for r in hold],
-            [int(r["above"]) for r in hold],
-            s=28,
-            c="#b45309",
-            marker="o",
-            zorder=3,
-            label="holdout 0/1",
-        )
+        ty = np.asarray([int(r["winter_id"]) for r in tr], dtype=float)
+        ta = np.asarray([int(r["above"]) for r in tr], dtype=float)
+        hy = np.asarray([int(r["winter_id"]) for r in hold], dtype=float)
+        ha = np.asarray([int(r["above"]) for r in hold], dtype=float)
+        if ty.size:
+            ax.bar(ty, ta, width=0.9, color="#94a3b8", linewidth=0, zorder=2, label="train 0/1")
+        if hy.size:
+            ax.bar(hy, ha, width=0.9, color="#b45309", linewidth=0, zorder=3, label="holdout 0/1")
         p = [clip01(rate + slope * (float(y) - anchor)) for y in years_line]
-        ax.plot(years_line, p, color="#0f172a", lw=1.1, label="Sen clipped p")
-        ax.axhline(rate, color="#64748b", ls="--", lw=1.0, label="train rate")
-        ax.set_title(city, fontsize=10)
-        ax.set_ylim(-0.08, 1.08)
+        ax.plot(years_line, p, color="#0f172a", lw=1.6, zorder=4, label="Sen clipped p")
+        ax.axhline(rate, color="#334155", ls="--", lw=1.2, zorder=4, label="train rate")
+        ax.set_title(city, fontsize=13, pad=8)
+        ax.set_xlabel("winter-end year", fontsize=10)
+        ax.set_ylabel("above-normal", fontsize=10)
+        ax.set_ylim(-0.05, 1.18)
         ax.set_yticks([0, 1])
-        if sid in {"USW00093817", "USW00093819"}:
-            ax.set_xlabel("winter-end year")
-        if sid in {"USW00014848", "USW00093819"}:
-            ax.set_ylabel("above-normal")
+        ax.tick_params(labelsize=9)
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
     handles, labels = axes[0, 0].get_legend_handles_labels()
-    fig.legend(handles, labels, fontsize=7, loc="upper center", ncol=3, frameon=False)
-    fig.suptitle(title, fontsize=11)
-    fig.subplots_adjust(bottom=0.16, top=0.86, hspace=0.28, wspace=0.18)
-    fig.text(0.5, 0.04, subtitle, ha="center", fontsize=8)
+    fig.legend(
+        handles,
+        labels,
+        fontsize=9,
+        loc="lower center",
+        ncol=4,
+        frameon=False,
+        bbox_to_anchor=(0.5, 0.015),
+    )
+    fig.suptitle(title, fontsize=14, y=0.975)
+    fig.text(0.5, 0.005, subtitle, ha="center", fontsize=9)
+    fig.subplots_adjust(left=0.07, right=0.98, top=0.92, bottom=0.10, hspace=0.38, wspace=0.28)
+    return fig
+
+
+def write_series(dest: Path, *, fit: dict[str, Any], title: str, subtitle: str) -> Path:
+    require_clean(title, source="fig1_title")
+    require_clean(subtitle, source="fig1_sub")
+    import matplotlib.pyplot as plt
+
+    fig = draw_series(fit, title=title, subtitle=subtitle)
     dest.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(dest, dpi=130, bbox_inches="tight", pad_inches=0.18)
+    fig.savefig(dest, dpi=140, bbox_inches="tight", pad_inches=0.25)
     plt.close(fig)
     return dest
 

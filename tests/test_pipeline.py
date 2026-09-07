@@ -85,6 +85,45 @@ def test_bar_labels_are_city_names_and_do_not_overlap() -> None:
     plt.close(fig)
 
 
+def test_series_four_panels_are_separate_and_not_cropped() -> None:
+    import json
+
+    from snowfreq.config import CORE_STATIONS, LIVE_SERIES_SUBTITLE
+    from snowfreq.figure import draw_series
+
+    live = Path(__file__).resolve().parents[1] / "logs" / "in_live" / "stage_c_report.json"
+    fit = json.loads(live.read_text(encoding="utf-8"))
+    fig = draw_series(fit, title="DJF above-normal winters", subtitle=LIVE_SERIES_SUBTITLE)
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    axes = list(fig.axes)
+    assert len(axes) == 4
+    titles = [ax.get_title() for ax in axes]
+    assert titles == [city for _, city in CORE_STATIONS]
+    w, h = fig.get_size_inches()
+    assert w >= 11.0
+    assert h >= 9.5
+    title = fig._suptitle
+    assert title is not None
+    title_box = title.get_window_extent(renderer)
+    legends = [c for c in fig.legends]
+    assert legends
+    legend_box = legends[0].get_window_extent(renderer)
+    assert not title_box.overlaps(legend_box)
+    for ax in axes:
+        ax_box = ax.get_window_extent(renderer)
+        assert ax_box.width >= 280
+        assert ax_box.height >= 220
+        assert not title_box.overlaps(ax_box)
+        assert not legend_box.overlaps(ax_box)
+        assert len(ax.patches) >= 40
+        assert ax.get_xlabel() == "winter-end year"
+        assert ax.get_ylabel() == "above-normal"
+    import matplotlib.pyplot as plt
+
+    plt.close(fig)
+
+
 def test_third_figure_refused() -> None:
     try:
         _cap(3)
