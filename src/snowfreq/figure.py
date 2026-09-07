@@ -37,16 +37,24 @@ def _cap(n: int) -> None:
         raise FigureCapError(f"this tree stops at {MAX_FIGURES} figures")
 
 
+def _sen_is_flat(by_st: dict[str, Any]) -> bool:
+    slopes = [abs(float((by_st.get(sid) or {}).get("sen_slope_per_year") or 0.0)) for sid, _ in CORE_STATIONS]
+    return bool(slopes) and max(slopes) < 1e-12
+
+
 def draw_series(fit: dict[str, Any], *, title: str, subtitle: str):
-    """Four station panels. 0/1 winters as bars so the series has mass."""
+    """Four station panels. Holdout zeros sit on y = 0. Flat Sen is one line."""
     import matplotlib
 
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
 
     rows = list(fit.get("holdout_rows") or [])
     train = list(fit.get("train_rows") or [])
     by_st = fit["by_station"]
+    flat = _sen_is_flat(by_st)
     fig, axes = plt.subplots(2, 2, figsize=(12.0, 10.2), sharex=False, sharey=False)
     years_line = np.arange(int(fit["common_start"]), int(fit.get("train_last") or TRAIN_LAST_WINTER) + 7)
     for ax, (sid, city) in zip(axes.ravel(), CORE_STATIONS):
@@ -61,27 +69,63 @@ def draw_series(fit: dict[str, Any], *, title: str, subtitle: str):
         hy = np.asarray([int(r["winter_id"]) for r in hold], dtype=float)
         ha = np.asarray([int(r["above"]) for r in hold], dtype=float)
         if ty.size:
-            ax.bar(ty, ta, width=0.9, color="#94a3b8", linewidth=0, zorder=2, label="train 0/1")
+            ones = ta >= 0.5
+            if np.any(ones):
+                ax.bar(ty[ones], ta[ones], width=0.9, color="#94a3b8", linewidth=0, zorder=2)
         if hy.size:
-            ax.bar(hy, ha, width=0.9, color="#b45309", linewidth=0, zorder=3, label="holdout 0/1")
-        p = [clip01(rate + slope * (float(y) - anchor)) for y in years_line]
-        ax.plot(years_line, p, color="#0f172a", lw=1.6, zorder=4, label="Sen clipped p")
-        ax.axhline(rate, color="#334155", ls="--", lw=1.2, zorder=4, label="train rate")
+            h1 = ha >= 0.5
+            h0 = ~h1
+            if np.any(h1):
+                ax.bar(hy[h1], ha[h1], width=0.9, color="#b45309", linewidth=0, zorder=3)
+            if np.any(h0):
+                ax.scatter(
+                    hy[h0],
+                    np.zeros(int(h0.sum())),
+                    s=42,
+                    c="#b45309",
+                    marker="o",
+                    zorder=5,
+                    edgecolors="#7c2d12",
+                    linewidths=0.6,
+                )
+        if flat:
+            ax.axhline(rate, color="#0f172a", lw=1.6, zorder=4)
+        else:
+            p = [clip01(rate + slope * (float(y) - anchor)) for y in years_line]
+            ax.plot(years_line, p, color="#0f172a", lw=1.6, zorder=4)
+            ax.axhline(rate, color="#334155", ls="--", lw=1.2, zorder=4)
         ax.set_title(city, fontsize=13, pad=8)
         ax.set_xlabel("winter-end year", fontsize=10)
         ax.set_ylabel("above-normal", fontsize=10)
-        ax.set_ylim(-0.05, 1.18)
+        ax.set_ylim(-0.08, 1.18)
         ax.set_yticks([0, 1])
         ax.tick_params(labelsize=9)
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
-    handles, labels = axes[0, 0].get_legend_handles_labels()
+    handles: list = [
+        Patch(facecolor="#94a3b8", label="train above-normal"),
+        Patch(facecolor="#b45309", label="holdout above-normal"),
+        Line2D(
+            [0],
+            [0],
+            marker="o",
+            color="#b45309",
+            markeredgecolor="#7c2d12",
+            linestyle="None",
+            markersize=7,
+            label="holdout below-normal",
+        ),
+    ]
+    if flat:
+        handles.append(Line2D([0], [0], color="#0f172a", lw=1.6, label="Sen = train rate (0.000 / decade)"))
+    else:
+        handles.append(Line2D([0], [0], color="#0f172a", lw=1.6, label="Sen clipped p"))
+        handles.append(Line2D([0], [0], color="#334155", lw=1.2, ls="--", label="train rate"))
     fig.legend(
-        handles,
-        labels,
+        handles=handles,
         fontsize=9,
         loc="lower center",
-        ncol=4,
+        ncol=len(handles),
         frameon=False,
         bbox_to_anchor=(0.5, 0.015),
     )

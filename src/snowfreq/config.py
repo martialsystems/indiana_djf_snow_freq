@@ -58,6 +58,7 @@ FROZEN_NORMALS_IN = {
 
 LIVE_SERIES_SUBTITLE = (
     "Above-normal DJF winters (0/1) vs the frozen 1991-2020 normal. "
+    "Holdout zeros are marked on y = 0. Sen equals the train rate (0.000 / decade). "
     "Not inches and not a storm."
 )
 LIVE_BARS_SUBTITLE = (

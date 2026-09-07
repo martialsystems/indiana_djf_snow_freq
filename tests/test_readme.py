@@ -20,6 +20,8 @@ def test_readme_opens_with_the_question() -> None:
     assert "not a regional trend" in text
     assert "logs/in_live/series.png" in text
     assert "logs/in_live/brier_bars.png" in text
+    assert "Holdout zeros are orange marks on y = 0" in text
+    assert "Sen equals the train rate (0.000 / decade)" in text
     assert "9aa7935" in text
     assert "82ce0ce" in text
     assert "0ace8a1" in text

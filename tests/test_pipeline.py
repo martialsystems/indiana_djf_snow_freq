@@ -88,6 +88,8 @@ def test_bar_labels_are_city_names_and_do_not_overlap() -> None:
 def test_series_four_panels_are_separate_and_not_cropped() -> None:
     import json
 
+    import numpy as np
+
     from snowfreq.config import CORE_STATIONS, LIVE_SERIES_SUBTITLE
     from snowfreq.figure import draw_series
 
@@ -116,9 +118,20 @@ def test_series_four_panels_are_separate_and_not_cropped() -> None:
         assert ax_box.height >= 220
         assert not title_box.overlaps(ax_box)
         assert not legend_box.overlaps(ax_box)
-        assert len(ax.patches) >= 40
+        assert len(ax.patches) >= 20
         assert ax.get_xlabel() == "winter-end year"
         assert ax.get_ylabel() == "above-normal"
+    sb = axes[0]
+    hold0 = [
+        r for r in fit["holdout_rows"] if r["station_id"] == "USW00014848" and int(r["above"]) == 0
+    ]
+    assert len(hold0) == 6
+    y0 = np.concatenate([c.get_offsets()[:, 1] for c in sb.collections]) if sb.collections else np.array([])
+    assert y0.size >= 6
+    assert np.all(np.abs(y0) < 1e-9)
+    texts = " ".join(t.get_text() for t in fig.legends[0].get_texts())
+    assert "Sen = train rate (0.000 / decade)" in texts
+    assert texts.count("train rate") == 1
     import matplotlib.pyplot as plt
 
     plt.close(fig)
