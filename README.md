@@ -8,7 +8,7 @@ Holdout n=24 station-winters on the four cores (DJF 2019-20 through 2024-25). Tr
 
 Parents stay frozen: DJF snow `9aa7935`, NWI lake snow `82ce0ce`, first snow date `0ace8a1`. The 1991-2020 DJF normals are the parent lock (South Bend 51.4 in, Fort Wayne 26.2, Indianapolis 21.2, Evansville 9.3).
 
-[DJF snow tercile](https://github.com/martialsystems/indiana_djf_snow_tercile) [NWI lake-belt snow](https://github.com/martialsystems/nwi_lake_effect_snow) [First measurable snow date](https://github.com/martialsystems/indiana_first_snow_date) [Precip writeup](https://gist.github.com/martialsystems/b5f900aad37487bb8c0206a321c1ed5c)
+[DJF snow tercile](https://github.com/martialsystems/indiana_djf_snow_tercile) [DJF inches Sen versus year](https://github.com/martialsystems/indiana_djf_inches_sen) [NWI lake-belt snow](https://github.com/martialsystems/nwi_lake_effect_snow) [First measurable snow date](https://github.com/martialsystems/indiana_first_snow_date) [Precip writeup](https://gist.github.com/martialsystems/b5f900aad37487bb8c0206a321c1ed5c)
 
 Cores: South Bend `USW00014848`, Fort Wayne `USW00014827`, Indianapolis `USW00093819`, Evansville `USW00093817`. Valparaiso `USW00004846`, Michigan City `USC00125604`, LaPorte `USC00124837`, and Indiana Dunes `USC00124244` stay out.
 
