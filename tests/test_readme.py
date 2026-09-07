@@ -13,6 +13,7 @@ def test_readme_opens_with_the_question() -> None:
     body = "\n".join(text.splitlines()[1:]).lstrip()
     assert body.startswith(QUESTION)
     assert body.splitlines()[2].startswith("No.")
+    assert "`6de7758`" in text
     assert "1991-2020" in text
     assert "0.1947" in text
     assert "Pages stay off" in text

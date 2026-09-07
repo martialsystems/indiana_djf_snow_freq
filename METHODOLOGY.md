@@ -41,4 +41,4 @@ Lead with holdout Brier on the 0/1 label. MAE second. Sen slope is also reported
 
 ## Parents
 
-Cite DJF snow `9aa7935`, NWI lake snow `82ce0ce`, first snow date `0ace8a1`. Do not restamp them. Live skill is in `logs/in_live/stage_c_report.json`. Sen does not beat the train-era rate on holdout Brier. Pages stay off.
+Cite DJF snow `9aa7935`, NWI lake snow `82ce0ce`, first snow date `0ace8a1`. Do not restamp them. Live skill is `6de7758` from `logs/in_live/stage_c_report.json`. Sen does not beat the train-era rate on holdout Brier. Pages stay off.

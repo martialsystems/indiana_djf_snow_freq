@@ -2,7 +2,7 @@
 
 Does a train-era Sen slope of DJF-above-normal winters beat the train-era above-normal rate at held-out Indiana GHCND cores?
 
-No. Locked science SHA pending first commit. Train-era Sen slope is 0.000 per decade at all four cores. Holdout Brier and MAE are identical to the frozen train-era rate (0.1947 / 0.4352). Last winter's 0/1 is worse on Brier (0.2083) and better on MAE (0.2083). The verdict is Brier vs the rate: Sen does not beat it. Counts of winters the slope gets the sign right are not the method. South Bend holdout 0/6 and the 1/6 rows at Fort Wayne, Indianapolis, and Evansville are small-n rows, not a regional trend. Pages stay off.
+No. Locked `6de7758`. Train-era Sen slope is 0.000 per decade at all four cores. Holdout Brier and MAE are identical to the frozen train-era rate (0.1947 / 0.4352). Last winter's 0/1 is worse on Brier (0.2083) and better on MAE (0.2083). The verdict is Brier vs the rate: Sen does not beat it. Counts of winters the slope gets the sign right are not the method. South Bend holdout 0/6 and the 1/6 rows at Fort Wayne, Indianapolis, and Evansville are small-n rows, not a regional trend. Pages stay off.
 
 Holdout n=24 station-winters on the four cores (DJF 2019-20 through 2024-25). Train: through DJF 2018-19 on the common window starting 1949 (n=70 at South Bend, 71 at the other three). Confirmation DJF 2025-26 is out of train, out of the slope, and out of the rate.
 
