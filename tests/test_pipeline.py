@@ -75,11 +75,16 @@ def test_bar_labels_are_city_names_and_do_not_overlap() -> None:
     fig = draw_bars(fit, title="Holdout Brier", subtitle=LIVE_BARS_SUBTITLE)
     fig.canvas.draw()
     renderer = fig.canvas.get_renderer()
-    for ax in fig.axes:
-        boxes = [t.get_window_extent(renderer=renderer) for t in ax.get_xticklabels()]
-        assert len(boxes) == 4
-        for left, right in zip(boxes, boxes[1:]):
-            assert not left.overlaps(right), (left, right)
+    axes = list(fig.axes)
+    assert len(axes) == 2
+    pool, st_ax = axes
+    pool_labels = [t.get_text() for t in pool.get_xticklabels()]
+    assert pool_labels == ["Sen slope", "train rate", "last winter"]
+    assert any("Sen = rate" in t.get_text() for t in pool.texts)
+    boxes = [t.get_window_extent(renderer=renderer) for t in st_ax.get_xticklabels()]
+    assert len(boxes) == 4
+    for left, right in zip(boxes, boxes[1:]):
+        assert not left.overlaps(right), (left, right)
     import matplotlib.pyplot as plt
 
     plt.close(fig)

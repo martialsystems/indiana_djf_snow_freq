@@ -14,11 +14,11 @@ Cores: South Bend `USW00014848`, Fort Wayne `USW00014827`, Indianapolis `USW0009
 
 ![Figure 1. Holdout and train 0/1 series](logs/in_live/series.png)
 
-Figure 1. Train and holdout above-normal DJF winters (0/1) versus winter-end year. Holdout zeros are orange marks on y = 0, so South Bend 0/6 is visible. Sen equals the train rate (0.000 / decade): one line, not two. Frozen 1991-2020 normal is the classifier. Above-normal winters, not inches and not a storm.
+Figure 1. Train and holdout above-normal DJF winters (0/1) versus winter-end year. Holdout zeros are orange marks on y = 0, so South Bend 0/6 is visible. Train zeros sit on y = 0 the same way. Sen equals the train rate (0.000 / decade): one line, not two. Frozen 1991-2020 normal is the classifier. Above-normal winters, not inches and not a storm.
 
 ![Figure 2. Holdout Brier bars](logs/in_live/brier_bars.png)
 
-Figure 2. Holdout Brier. Sen slope vs train-era rate vs last winter. Probability error, not a decline story.
+Figure 2. Pooled holdout Brier. Sen 0.1947 equals the train-era rate 0.1947 vs last winter 0.208. Probability error, not a decline story.
 
 ## Live skill (held-out winters)
 

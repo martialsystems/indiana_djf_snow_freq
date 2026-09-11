@@ -13,7 +13,6 @@ from snowfreq.config import (
     CORE_STATIONS,
     FIXTURE_BARS_SUBTITLE,
     FIXTURE_SERIES_SUBTITLE,
-    LIVE_BARS_SUBTITLE,
     LIVE_SERIES_SUBTITLE,
     MAX_FIGURES,
     TRAIN_LAST_WINTER,
@@ -70,8 +69,20 @@ def draw_series(fit: dict[str, Any], *, title: str, subtitle: str):
         ha = np.asarray([int(r["above"]) for r in hold], dtype=float)
         if ty.size:
             ones = ta >= 0.5
+            t0 = ~ones
             if np.any(ones):
                 ax.bar(ty[ones], ta[ones], width=0.9, color="#94a3b8", linewidth=0, zorder=2)
+            if np.any(t0):
+                ax.scatter(
+                    ty[t0],
+                    np.zeros(int(t0.sum())),
+                    s=42,
+                    c="#94a3b8",
+                    marker="o",
+                    zorder=5,
+                    edgecolors="#475569",
+                    linewidths=0.6,
+                )
         if hy.size:
             h1 = ha >= 0.5
             h0 = ~h1
@@ -109,6 +120,16 @@ def draw_series(fit: dict[str, Any], *, title: str, subtitle: str):
             [0],
             [0],
             marker="o",
+            color="#94a3b8",
+            markeredgecolor="#475569",
+            linestyle="None",
+            markersize=7,
+            label="train below-normal",
+        ),
+        Line2D(
+            [0],
+            [0],
+            marker="o",
             color="#b45309",
             markeredgecolor="#7c2d12",
             linestyle="None",
@@ -123,15 +144,15 @@ def draw_series(fit: dict[str, Any], *, title: str, subtitle: str):
         handles.append(Line2D([0], [0], color="#334155", lw=1.2, ls="--", label="train rate"))
     fig.legend(
         handles=handles,
-        fontsize=9,
+        fontsize=8,
         loc="lower center",
-        ncol=len(handles),
+        ncol=3,
         frameon=False,
-        bbox_to_anchor=(0.5, 0.015),
+        bbox_to_anchor=(0.5, 0.012),
     )
     fig.suptitle(title, fontsize=14, y=0.975)
     fig.text(0.5, 0.005, subtitle, ha="center", fontsize=9)
-    fig.subplots_adjust(left=0.07, right=0.98, top=0.92, bottom=0.10, hspace=0.38, wspace=0.28)
+    fig.subplots_adjust(left=0.07, right=0.98, top=0.92, bottom=0.12, hspace=0.38, wspace=0.28)
     return fig
 
 
@@ -147,6 +168,17 @@ def write_series(dest: Path, *, fit: dict[str, Any], title: str, subtitle: str) 
     return dest
 
 
+def live_bars_subtitle(fit: dict[str, Any]) -> str:
+    hold = fit.get("holdout") or {}
+    sen = float((hold.get("slope") or {}).get("brier") or 0.0)
+    rate = float((hold.get("rate") or {}).get("brier") or 0.0)
+    last = float((hold.get("last_year") or {}).get("brier") or 0.0)
+    return (
+        f"Pooled Brier: Sen {sen:.4f} = train rate {rate:.4f} vs last winter {last:.3f}. "
+        "Probability error, not a decline story."
+    )
+
+
 def draw_bars(fit: dict[str, Any], *, title: str, subtitle: str):
     import matplotlib
 
@@ -155,22 +187,82 @@ def draw_bars(fit: dict[str, Any], *, title: str, subtitle: str):
 
     by_st = fit["by_station"]
     order, labels = bar_station_labels(by_st)
+    hold = fit.get("holdout") or {}
+
+    def _brier_of(block: dict[str, Any] | None) -> float:
+        if not block or "brier" not in block or block["brier"] is None:
+            return float("nan")
+        return float(block["brier"])
+
+    sen_p = _brier_of(hold.get("slope"))
+    rate_p = _brier_of(hold.get("rate"))
+    last_p = _brier_of(hold.get("last_year"))
+    fig, (ax_p, ax_s) = plt.subplots(
+        2,
+        1,
+        figsize=(7.4, 7.0),
+        gridspec_kw={"height_ratios": [1.15, 1.0]},
+    )
+    names = ["Sen slope", "train rate", "last winter"]
+    pooled = np.array([sen_p, rate_p, last_p], dtype=float)
+    colors = ["#0f172a", "#64748b", "#b45309"]
+    plot_vals = np.where(np.isfinite(pooled), pooled, 0.0)
+    bars = ax_p.bar(names, plot_vals, color=colors, width=0.62, edgecolor="#0f172a", linewidth=0.3)
+    for rect, val in zip(bars, pooled):
+        if not np.isfinite(val):
+            continue
+        ax_p.text(
+            rect.get_x() + rect.get_width() / 2,
+            val + 0.004,
+            f"{val:.4f}",
+            ha="center",
+            va="bottom",
+            fontsize=9,
+        )
+    if np.isfinite(sen_p) and np.isfinite(rate_p) and abs(sen_p - rate_p) < 1e-9:
+        ax_p.text(
+            0.5,
+            max(sen_p, rate_p) + 0.022,
+            "Sen = rate",
+            ha="center",
+            va="bottom",
+            fontsize=9,
+        )
+    finite = [v for v in (sen_p, rate_p, last_p) if np.isfinite(v)]
+    hero = max([v for v in (sen_p, rate_p) if np.isfinite(v)] or [1e-6])
+    ymax = max(finite or [hero]) * 1.28
+    if np.isfinite(last_p) and last_p > 1.35 * hero:
+        ymax = 1.35 * hero
+        ax_p.text(
+            2,
+            ymax * 0.96,
+            f"last {last_p:.3f}",
+            ha="center",
+            va="top",
+            fontsize=8,
+            color="#b45309",
+        )
+    ax_p.set_ylim(0.0, ymax if np.isfinite(ymax) else 1.0)
+    ax_p.set_ylabel("Brier")
+    ax_p.set_title("Pooled holdout (four cores)", fontsize=10)
+    ax_p.tick_params(axis="x", labelsize=9)
+
     x = np.arange(len(order), dtype=float)
     width = 0.24
-    fig, ax = plt.subplots(figsize=(7.4, 4.8))
     slope = [by_st[sid]["slope"]["brier"] for sid in order]
     rate = [by_st[sid]["rate"]["brier"] for sid in order]
     last = [by_st[sid]["last_year"]["brier"] for sid in order]
-    ax.bar(x - width, slope, width, color="#0f172a", label="Sen slope")
-    ax.bar(x, rate, width, color="#64748b", label="train rate")
-    ax.bar(x + width, last, width, color="#b45309", label="last winter")
-    ax.set_xticks(x)
-    ax.set_xticklabels(labels, fontsize=8, rotation=28, ha="right")
-    ax.set_ylabel("Brier")
-    ax.legend(fontsize=7, loc="upper right")
-    ax.tick_params(axis="x", pad=2)
+    ax_s.bar(x - width, slope, width, color="#0f172a", label="Sen slope")
+    ax_s.bar(x, rate, width, color="#64748b", label="train rate")
+    ax_s.bar(x + width, last, width, color="#b45309", label="last winter")
+    ax_s.set_xticks(x)
+    ax_s.set_xticklabels(labels, fontsize=8, rotation=28, ha="right")
+    ax_s.set_ylabel("Brier")
+    ax_s.set_title("Per station", fontsize=9)
+    ax_s.legend(fontsize=7, loc="upper right")
+    ax_s.tick_params(axis="x", pad=2)
     fig.suptitle(title, fontsize=11)
-    fig.subplots_adjust(bottom=0.28, top=0.86)
+    fig.subplots_adjust(bottom=0.16, top=0.90, hspace=0.48)
     fig.text(0.5, 0.03, subtitle, ha="center", fontsize=8)
     return fig
 
@@ -200,7 +292,7 @@ def write_two(log_dir: Path, *, fit: dict[str, Any], live: bool) -> list[str]:
         log_dir / "brier_bars.png",
         fit=fit,
         title="Holdout Brier",
-        subtitle=LIVE_BARS_SUBTITLE if live else FIXTURE_BARS_SUBTITLE,
+        subtitle=live_bars_subtitle(fit) if live else FIXTURE_BARS_SUBTITLE,
     )
     paths = [series, bars]
     _cap(len(paths))
